@@ -1,3 +1,9 @@
 <div class="w-72 h-screen bg-blue-500 p-4">
-  <h1 class="text-2xl">Disboard</h1>
+  <h1 class="text-2xl font-bold">Disboard</h1>
+
+  <div class="">
+    <div *ngFor="let room of rooms" class="cursor-pointer">
+      <p class="text-lg hover:text-gray-500">{{ room.name }}</p>
+    </div>
+  </div>
 </div>
