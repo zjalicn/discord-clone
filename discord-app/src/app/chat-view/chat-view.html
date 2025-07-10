@@ -1,0 +1,35 @@
+<div class="flex flex-col gap-1 h-full">
+  <app-chatbox
+    [messages]="(messages$ | async) || []"
+    class="flex-1"
+  ></app-chatbox>
+
+  <div class="bg-white border-2 border-gray-300 rounded-lg">
+    <div class="rounded-lg shadow-lg p-4">
+      <div class="space-y-1">
+        <textarea
+          rows="3"
+          maxlength="500"
+          placeholder="Type your message..."
+          [(ngModel)]="messageText"
+          class="w-full bg-blue-50 border border-blue-200 rounded-lg p-2 text-blue-900 placeholder-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-none"
+        ></textarea>
+
+        <!-- Character counter -->
+        <div class="flex justify-between items-center">
+          <span class="text-xs text-gray-500">
+            {{ messageText.length }}/500 characters
+          </span>
+
+          <button
+            class="max-w-[200px] bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center gap-2 disabled:bg-gray-400 disabled:cursor-not-allowed"
+            (click)="handleSubmitMessage()"
+            [disabled]="messageText.trim().length === 0"
+          >
+            Send <lucide-icon name="send" size="16"></lucide-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
