@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["GrapeSoda", "Courier", "monospace"],
+        sans: ["Courier", "monospace"],
       },
     },
   },
