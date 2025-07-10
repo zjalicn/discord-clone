@@ -5,6 +5,7 @@ import { ChatMessage } from '../chat-message/chat-message';
 
 @Component({
   selector: 'app-chatbox',
+  standalone: true,
   imports: [CommonModule, ChatMessage],
   templateUrl: './chatbox.html',
   styleUrl: './chatbox.css',

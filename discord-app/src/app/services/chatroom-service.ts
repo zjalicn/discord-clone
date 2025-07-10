@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, map } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Room } from '../../types/room';
 import { User } from '../../types/user';
 import { Message } from '../../types/message';

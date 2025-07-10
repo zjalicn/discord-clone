@@ -1,14 +1,22 @@
 import { Component } from '@angular/core';
 import { Room } from '../../types/room';
 import { CommonModule } from '@angular/common';
+import { ChatroomService } from '../services/chatroom-service';
 
 @Component({
   selector: 'app-sidebar',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css',
 })
 export class Sidebar {
+  chatroomService: ChatroomService;
+
+  constructor(private _chatroomService: ChatroomService) {
+    this.chatroomService = _chatroomService;
+  }
+
   rooms: Room[] = [
     {
       roomId: '1',
@@ -35,4 +43,8 @@ export class Sidebar {
       messages: [],
     },
   ];
+
+  selectRoom(roomId: string) {
+    this.chatroomService.switchRoom(roomId);
+  }
 }

@@ -6,6 +6,7 @@ import { IconsModule } from '../shared/icons.module';
 
 @Component({
   selector: 'app-chat-view',
+  standalone: true,
   imports: [Chatbox, IconsModule, FormsModule],
   templateUrl: './chat-view.html',
   styleUrl: './chat-view.css',
