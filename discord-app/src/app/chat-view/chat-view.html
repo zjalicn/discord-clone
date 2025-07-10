@@ -1,5 +1,8 @@
 <div class="flex flex-col gap-1 h-full">
-  <app-chatbox [messages]="messages" class="flex-1"></app-chatbox>
+  <app-chatbox
+    [messages]="(messages$ | async) || []"
+    class="flex-1"
+  ></app-chatbox>
 
   <div class="bg-white border-2 border-gray-300 rounded-lg">
     <div class="rounded-lg shadow-lg p-4">

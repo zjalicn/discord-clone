@@ -7,8 +7,7 @@
       [message]="message"
     ></app-chat-message>
 
-    <!-- Show if no messages -->
-    <div *ngIf="messages.length === 0" class="text-center text-gray-500 py-8">
+    <div *ngIf="messages?.length === 0" class="text-center text-gray-500 py-8">
       No messages yet. Start the conversation!
     </div>
   </div>

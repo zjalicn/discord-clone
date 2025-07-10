@@ -46,5 +46,6 @@ export class ChatroomService {
 
   private loadMessagesForRoom(roomId: string): void {
     // GET /api/rooms/{roomId}/messages
+    this._currentRoomMessages.next([]);
   }
 }
