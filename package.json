@@ -1,0 +1,20 @@
+{
+  "name": "discord-clone",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "discord-app"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:app\"",
+    "dev:app": "cd discord-app && ng serve",
+    "dev:api": "cd discord-api && dotnet run",
+    "build": "npm run build:app && npm run build:api",
+    "build:app": "cd discord-app && ng build",
+    "build:api": "cd discord-api && dotnet build",
+    "install:all": "npm install && cd discord-app && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
