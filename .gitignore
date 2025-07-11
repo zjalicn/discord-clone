@@ -3,3 +3,17 @@ dist/
 .env
 .DS_Store
 *.log 
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+
+# Angular
+.angular/
+
+# Config files with secrets
+appsettings.json
+appsettings.Development.json
+appsettings.Production.json
