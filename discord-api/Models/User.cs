@@ -2,7 +2,11 @@ namespace DiscordApi.Models
 {
     public class User
     {
-        public string UserId { get; set; } = string.Empty;
+        [Key]
+        public Guid UserId { get; set; } = string.Empty;
+
+        [Required]
+        [StringLength(50)]
         public string Username { get; set; } = string.Empty;
     }
 }

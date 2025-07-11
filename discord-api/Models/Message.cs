@@ -2,10 +2,17 @@ namespace DiscordApi.Models
 {
     public class Message
     {
-        public string MessageId { get; set; } = string.Empty;
-        public string RoomId { get; set; } = string.Empty;
-        public string UserId { get; set; } = string.Empty;
+        [Key]
+        public Guid MessageId { get; set; } = string.Empty;
+
+        [Required]
+        public Guid RoomId { get; set; } = string.Empty;
+
+        [Required]
+        public Guid UserId { get; set; } = string.Empty;
+
         public string MessageText { get; set; } = string.Empty;
+
         public long Timestamp { get; set; }
     }
 }
