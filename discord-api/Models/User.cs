@@ -3,7 +3,7 @@ namespace DiscordApi.Models
     public class User
     {
         [Key]
-        public Guid UserId { get; set; } = string.Empty;
+        public Guid UserId { get; set; } = Guid.Empty;
 
         [Required]
         [StringLength(50)]

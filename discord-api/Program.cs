@@ -21,10 +21,15 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Apply database migrations in development
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    using (var scope = app.Services.CreateScope())
+    {
+        var context = scope.ServiceProvider.GetRequiredService<DiscordDbContext>();
+        context.Database.EnsureCreated(); // For development only
+        // context.Database.Migrate(); // For production
+    }
 }
 
 app.UseCors();

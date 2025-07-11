@@ -3,10 +3,10 @@ namespace DiscordApi.Models
     public class Room
     {
         [Key]
-        public Guid RoomId { get; set; } = string.Empty;
+        public Guid RoomId { get; set; } = Guid.Empty;
 
         [Required]
-        public Guid ChatRoomId { get; set; } = string.Empty;
+        public Guid ChatRoomId { get; set; } = Guid.Empty;
 
         [Required]
         [StringLength(50)]

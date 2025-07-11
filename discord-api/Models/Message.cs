@@ -3,13 +3,13 @@ namespace DiscordApi.Models
     public class Message
     {
         [Key]
-        public Guid MessageId { get; set; } = string.Empty;
+        public Guid MessageId { get; set; } = Guid.Empty;
 
         [Required]
-        public Guid RoomId { get; set; } = string.Empty;
+        public Guid RoomId { get; set; } = Guid.Empty;
 
         [Required]
-        public Guid UserId { get; set; } = string.Empty;
+        public Guid UserId { get; set; } = Guid.Empty;
 
 +       [Required]
 +       [MaxLength(2000)]
