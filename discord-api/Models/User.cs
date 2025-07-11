@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace DiscordApi.Models
 {
     public class User
@@ -9,7 +11,7 @@ namespace DiscordApi.Models
         [StringLength(50)]
         public string Username { get; set; }
 
-        public List<ChatRoom>? ChatRooms { get; set; } = new();
-        public List<Message> Messages { get; set; } = new();
+        public List<ChatRoom>? ChatRooms { get; set; }
+        public List<Message>? Messages { get; set; }
     }
 }

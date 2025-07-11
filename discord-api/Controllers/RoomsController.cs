@@ -20,7 +20,7 @@ namespace DiscordApi.Controllers
         public async Task<ActionResult<IEnumerable<Room>>> GetAllRooms()
         {
             return await _context.Rooms
-                .Include(r => r.Users)
+                .Include(r => r.ChatRoom)
                 .Include(r => r.Messages)
                 .ToListAsync();
         }
@@ -29,7 +29,7 @@ namespace DiscordApi.Controllers
         public async Task<ActionResult<Room>> GetRoomById(Guid id)
         {
             var room = await _context.Rooms
-                .Include(r => r.Users)
+                .Include(r => r.ChatRoom)
                 .Include(r => r.Messages)
                 .FirstOrDefaultAsync(r => r.RoomId == id);
 

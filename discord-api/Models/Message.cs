@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace DiscordApi.Models
 {
     public class Message
@@ -11,8 +13,8 @@ namespace DiscordApi.Models
         [Required]
         public Guid UserId { get; set; }
 
-+       [Required]
-+       [MaxLength(2000)]
+        [Required]
+        [MaxLength(2000)]
         public string MessageText { get; set; }
 
         public DateTime Timestamp { get; set; } = DateTime.UtcNow;

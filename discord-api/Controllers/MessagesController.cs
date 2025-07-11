@@ -35,7 +35,7 @@ namespace DiscordApi.Controllers
         public async Task<ActionResult<Message>> CreateMessage(Message message)
         {
             message.MessageId = Guid.NewGuid();
-            message.Timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+            message.Timestamp = DateTime.UtcNow;
             _context.Messages.Add(message);
             await _context.SaveChangesAsync();
 

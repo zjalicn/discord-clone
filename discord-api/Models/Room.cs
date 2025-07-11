@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace DiscordApi.Models
 {
     public class Room
@@ -12,7 +14,7 @@ namespace DiscordApi.Models
         [StringLength(50)]
         public string Name { get; set; }
 
-        public ChatRoom? ChatRoom {get; set; }
+        public ChatRoom? ChatRoom { get; set; }
         public List<Message>? Messages { get; set; }
     }
 }

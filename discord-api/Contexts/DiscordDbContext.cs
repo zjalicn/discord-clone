@@ -30,7 +30,7 @@ namespace DiscordApi.Contexts
             // Chatroom <-> Users
             modelBuilder.Entity<ChatRoom>()
                 .HasMany(c => c.Users)
-                .WithMany(u => u.ChatRooms)
+                .WithMany(u => u.ChatRooms);
 
             // ChatRoom <-> Room
             modelBuilder.Entity<Room>()
