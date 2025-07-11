@@ -11,8 +11,13 @@ namespace DiscordApi.Models
         [Required]
         public Guid UserId { get; set; } = string.Empty;
 
++       [Required]
++       [MaxLength(2000)]
         public string MessageText { get; set; } = string.Empty;
 
-        public long Timestamp { get; set; }
+        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+
+        public User User { get; set; }
+        public Room Room { get; set; }
     }
 }

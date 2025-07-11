@@ -28,7 +28,7 @@ namespace DiscordApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ChatRoom>> GetChatRoomById(string id)
+        public async Task<ActionResult<ChatRoom>> GetChatRoomById(Guid id)
         {
             var chatRoom = await _context.ChatRooms
                 .Include(c => c.Rooms)
@@ -41,7 +41,7 @@ namespace DiscordApi.Controllers
         [HttpPost]
         public async Task<ActionResult<ChatRoom>> CreateChatRoom(ChatRoom chatRoom)
         {
-            chatRoom.ChatRoomId = Guid.NewGuid().ToString();
+            chatRoom.ChatRoomId = Guid.NewGuid();
             _context.ChatRooms.Add(chatRoom);
             await _context.SaveChangesAsync();
 
@@ -49,7 +49,7 @@ namespace DiscordApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateChatRoomById(string id, ChatRoom chatRoom)
+        public async Task<IActionResult> UpdateChatRoomById(Guid id, ChatRoom chatRoom)
         {
             if (id != chatRoom.ChatRoomId)
                 return BadRequest();
@@ -61,7 +61,7 @@ namespace DiscordApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteChatRoomById(string id)
+        public async Task<IActionResult> DeleteChatRoomById(Guid id)
         {
             var chatRoom = await _context.ChatRooms.FindAsync(id);
             if (chatRoom == null)

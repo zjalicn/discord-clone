@@ -23,7 +23,7 @@ namespace DiscordApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUserById(string id)
+        public async Task<ActionResult<User>> GetUserById(Guid id)
         {
             var user = await _context.Users
                 .FirstOrDefaultAsync(u => u.UserId == id);
@@ -34,7 +34,7 @@ namespace DiscordApi.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> CreateUser(User user)
         {
-            user.UserId = Guid.NewGuid().ToString();
+            user.UserId = Guid.NewGuid();
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
@@ -42,7 +42,7 @@ namespace DiscordApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUserById(string id, User user)
+        public async Task<IActionResult> UpdateUserById(Guid id, User user)
         {
             if (id != user.UserId)
                 return BadRequest();
@@ -54,7 +54,7 @@ namespace DiscordApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUserById(string id)
+        public async Task<IActionResult> DeleteUserById(Guid id)
         {
             var user = await _context.Users.FindAsync(id);
             if (user == null)

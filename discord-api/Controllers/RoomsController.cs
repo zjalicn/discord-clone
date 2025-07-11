@@ -26,7 +26,7 @@ namespace DiscordApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Room>> GetRoomById(string id)
+        public async Task<ActionResult<Room>> GetRoomById(Guid id)
         {
             var room = await _context.Rooms
                 .Include(r => r.Users)
@@ -39,7 +39,7 @@ namespace DiscordApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Room>> CreateRoom(Room room)
         {
-            room.RoomId = Guid.NewGuid().ToString();
+            room.RoomId = Guid.NewGuid();
             _context.Rooms.Add(room);
             await _context.SaveChangesAsync();
 
@@ -47,7 +47,7 @@ namespace DiscordApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateRoomById(string id, Room room)
+        public async Task<IActionResult> UpdateRoomById(Guid id, Room room)
         {
             if (id != room.RoomId)
                 return BadRequest();
@@ -59,7 +59,7 @@ namespace DiscordApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRoomById(string id)
+        public async Task<IActionResult> DeleteRoomById(Guid id)
         {
             var room = await _context.Rooms.FindAsync(id);
             if (room == null)

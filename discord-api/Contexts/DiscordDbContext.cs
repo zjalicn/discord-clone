@@ -27,16 +27,28 @@ namespace DiscordApi.Contexts
             modelBuilder.Entity<Message>()
                 .HasKey(m => m.MessageId);
 
-            // Relationships
+            // Chatroom <-> Users
+            modelBuilder.Entity<ChatRoom>()
+                .HasMany(c => c.Users)
+                .WithMany(u => u.ChatRooms)
+
+            // ChatRoom <-> Room
+            modelBuilder.Entity<Room>()
+                .HasOne<ChatRoom>()
+                .WithMany(c => c.Rooms)
+                .HasForeignKey(r => r.ChatRoomId);
+
+            // Messages <-> Room
             modelBuilder.Entity<Message>()
                 .HasOne<Room>()
                 .WithMany(r => r.Messages)
                 .HasForeignKey(m => m.RoomId);
 
-            modelBuilder.Entity<Room>()
-                .HasOne<ChatRoom>()
-                .WithMany(c => c.Rooms)
-                .HasForeignKey(r => r.ChatRoomId);
+            // Messages <-> Users
+            modelBuilder.Entity<Message>()
+                .HasOne(m => m.User)
+                .WithMany(u => u.Messages)
+                .HasForeignKey(m => m.UserId);
         }
     }
 }

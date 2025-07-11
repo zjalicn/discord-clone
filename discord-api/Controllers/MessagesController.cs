@@ -23,7 +23,7 @@ namespace DiscordApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Message>> GetMessageById(string id)
+        public async Task<ActionResult<Message>> GetMessageById(Guid id)
         {
             var message = await _context.Messages
                 .FirstOrDefaultAsync(m => m.MessageId == id);
@@ -34,7 +34,7 @@ namespace DiscordApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Message>> CreateMessage(Message message)
         {
-            message.MessageId = Guid.NewGuid().ToString();
+            message.MessageId = Guid.NewGuid();
             message.Timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
             _context.Messages.Add(message);
             await _context.SaveChangesAsync();
@@ -43,7 +43,7 @@ namespace DiscordApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateMessageById(string id, Message message)
+        public async Task<IActionResult> UpdateMessageById(Guid id, Message message)
         {
             if (id != message.MessageId)
                 return BadRequest();
@@ -55,7 +55,7 @@ namespace DiscordApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMessageById(string id)
+        public async Task<IActionResult> DeleteMessageById(Guid id)
         {
             var message = await _context.Messages.FindAsync(id);
             if (message == null)

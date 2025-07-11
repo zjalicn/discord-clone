@@ -12,8 +12,7 @@ namespace DiscordApi.Models
         [StringLength(50)]
         public string Name { get; set; } = string.Empty;
 
-        public List<User> Users { get; set; } = new();
-
+        public ChatRoom ChatRoom {get; set; } = new();
         public List<Message> Messages { get; set; } = new();
     }
 }

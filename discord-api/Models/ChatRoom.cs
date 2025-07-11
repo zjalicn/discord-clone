@@ -10,7 +10,6 @@ namespace DiscordApi.Models
         public string Name { get; set; } = string.Empty;
 
         public List<Room> Rooms { get; set; } = new();
-
         public List<User> Users { get; set; } = new();
     }
 }
