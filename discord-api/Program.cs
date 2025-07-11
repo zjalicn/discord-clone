@@ -9,8 +9,10 @@ builder.Services.AddDbContext<DiscordDbContext>(options =>
 
 builder.Services.AddControllers();
 
-builder.Services.AddCors(options => {
-    options.AddDefaultPolicy(policy => {
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
         policy.WithOrigins("http://localhost:4200")
         .AllowAnyHeader()
         .AllowAnyMethod();

@@ -7,4 +7,4 @@ namespace DiscordApi.Models
         public List<Room> Rooms { get; set; } = new();
         public List<User> Users { get; set; } = new();
     }
-} 
+}
